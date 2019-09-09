@@ -1,0 +1,608 @@
+@import url('https://fonts.googleapis.com/css?family=Libre+Franklin:400,500,700');
+*{ font-family: 'Libre Franklin', 'Open Sans', Arial ,'Microsoft JhengHei', sans-serif; margin: 0; padding: 0; box-sizing: border-box; -webkit-box-sizing: border-box;}
+html,body{ width: 100%; height: 100%;}
+
+/*animation*/
+@keyframes movement_effect{ 0%{ transform: scale(0);} 50%{ transform: scale(1.2); top: 70px; left: 50px;} 100%{ transform: scale(1); visibility: visible;}}
+@-webkit-keyframes movement_effect{ 0%{ transform: scale(0);} 50%{ transform: scale(1.2); top: 70px; left: 50px;} 100%{ transform: scale(1); visibility: visible;}}
+@keyframes drawguiderect {0%{ transform: scale(0);} 50%{ transform: scale(1); background: #ededed;}}
+@-webkit-keyframes drawguiderect {0%{ transform: scale(0);} 50%{ transform: scale(1); background: #ededed;}}
+@keyframes bets_reciprocal{ 50%{ left: 0;} 100%{ left: -200%;}}
+@-webkit-keyframes bets_reciprocal{ 50%{ left: 0;} 100%{ left: -200%;}}
+@keyframes interfacerun { 0%{ transform: translateX(-100%);} 20%{ transform: translateX(0); transform: skew(15deg);} 40%{ transform: translateX(-50%); transform: skew(0deg);} 60%{ transform: translateY(-10px);} 80%{ transform: translateX(80%); transform: skew(-15deg);} 100%{ transform: translateX(500%);  opacity: 1;}}
+@-webkit-keyframes interfacerun { 0%{ transform: translateX(-100%);} 20%{ transform: translateX(0); transform: skew(15deg);} 40%{ transform: translateX(-50%); transform: skew(0deg);} 60%{ transform: translateY(-10px);} 80%{ transform: translateX(80%); transform: skew(-15deg);} 100%{ transform: translateX(500%);  opacity: 1;}}
+@keyframes fontscale{ 0%{ transform: scale(0); opacity: 1;} 50%{ transform: scale(2);} 100%{ transform: scale(1); opacity: 1;}}
+@-webkit-keyframes fontscale{ 0%{ transform: scale(0); opacity: 1;} 50%{ transform: scale(2);} 100%{ transform: scale(1); opacity: 1;}}
+@keyframes showup{ 0%{ transform: translateY(200%); opacity: 0;} 50%{ transform: translateY(-1%);} 100%{ transform: translateY(1%); opacity: 1;}}
+@-webkit-keyframes showup{ 0%{ transform: translateY(200%); opacity: 0;} 50%{ transform: translateY(-1%);} 100%{ transform: translateY(1%); opacity: 1;}}
+@keyframes langshow{ 0%{ transform: translateX(-200%);} 50%{ transform: translateY(2px);} 100%{ transform: translateY(-2px); opacity: 1;}}
+@-webkit-keyframes langshow{ 0%{ transform: translateX(-200%);} 50%{ transform: translateY(2px);} 100%{ transform: translateY(-2px); opacity: 1;}}
+@keyframes leftshow{ 0%{ transform: translateX(-200%);} 100%{ transform: translateX(0%); visibility: visible;}}
+@-webkit-keyframes leftshow{ 0%{ transform: translateX(-200%);} 100%{ transform: translateX(0%); visibility: visible;}}
+@keyframes rightshow{ 0%{ transform: translateX(200%); visibility: hidden;} 100%{ transform: translateX(-2%); visibility: visible;}}
+@-webkit-keyframes rightshow{ 0%{ transform: translateX(200%); visibility: hidden;} 100%{ transform: translateX(-2%); visibility: visible;}}
+@keyframes mockupshow{ 0%{ transform: translate3d(-200%,0,0);} 50%{ transform: translate3d(0,0,0);} 100%{ transform: translate3d(0,-127px,0); visibility: visible;}}
+@-webkit-keyframes mockupshow{ 0%{ transform: translate3d(-200%,0,0);} 50%{ transform: translate3d(0,0,0);} 100%{ transform: translate3d(0,-127px,0); visibility: visible;}}
+@keyframes interactive{ 0%{ transform: translate3d(0,0,0);} 50%{ transform: translate3d(10px,10px,-2px);} 100%{ transform: translate3d(0px,0px,-5px);}}
+@-webkit-keyframes interactive{ 0%{ transform: translate3d(0,0,0);} 50%{ transform: translate3d(10px,10px,-2px);} 100%{ transform: translate3d(0px,0px,-5px);}}
+@keyframes circleup{ 0%{ transform: translate3d(0,0,0);} 50%{ transform: translate3d(-10px,10px,2px);} 100%{ transform: translate3d(0px,0px,-2px);}}
+@-webkit-keyframes circleup{ 0%{ transform: translate3d(0,0,0);} 50%{ transform: translate3d(-10px,10px,2px);} 100%{ transform: translate3d(0px,0px,-2px);}}
+@keyframes circledown{ 0%{ transform: translate3d(0,0,0);} 50%{ transform: translate3d(20px,10px,5px);} 100%{ transform: translate3d(0px,0px,2px);}}
+@-webkit-keyframes circledown{ 0%{ transform: translate3d(0,0,0);} 50%{ transform: translate3d(20px,10px,5px);} 100%{ transform: translate3d(0px,0px,2px);}}
+@keyframes loadingshow{ 0%{ transform: translateX(0);} 40%{ transform: translateX(-10px)} 60%{ transform: translateX(10px)} 80%{ transform: translateX(-10px);} 100%{ transform: translateX(0);}}
+@-webkit-keyframes loadingshow{ 0%{ transform: translateX(0);} 40%{ transform: translateX(-10px)} 60%{ transform: translateX(10px)} 80%{ transform: translateX(-10px);} 100%{ transform: translateX(0);}}
+
+
+/*transition style*/
+nav ul li a, header, .submit_box{ transition: .5s; -webkit-transition: .5s; -moz-transition: .5s; -o-transition: .5s; -ms-transition: .5s;}
+/*transform skew 25deg*/
+.bets_right_acc, .product_rect{ transform: skew(25deg); -webkit-transform: skew(25deg); -moz-transform: skew(25deg); -o-transform: skew(25deg); -ms-transform: skew(25deg);}
+/*transform skew -25deg*/
+.interface_right_acc, .common_rect{ transform: skew(-25deg); -webkit-transform: skew(-25deg); -moz-transform: skew(-25deg); -o-transform: skew(-25deg); -ms-transform: skew(-25deg);}
+/*transform skew -15deg*/
+.guide_rect span, .bets_features span, .product_title_info > .guide_rect, .contact_title_info > .guide_rect{ transform: skew(-15deg); -webkit-transform: skew(-15deg); -moz-transform: skew(-15deg); -o-transform: skew(-15deg); -ms-transform: skew(-15deg);}
+/*float clear*/
+header:after, .wrapper:after, nav:after, nav > ul:after, .intro_content:after, .intro_movement:after, .intro_container:after, .bets_container:after, .product_intro_container:after, .operate_container:after, .operate_intro:after, .computer_menu:after, .bets_effect:after, .bets_intro:after, .loading_content:after, .loading_container:after{ content: ''; display: block; clear: both;}
+
+/*font style*/
+/*sp font size 60px*/
+.features_computer span, .tablet_font span, .mobile_font span, .product_title_info h3, .contact_title_info h3{ font-size: 60px;}
+/*title font size 40px*/
+.intro_content h1, .intro_content h2{ font-size: 40px;}
+/*subtitle font size 30px*/
+.bets_intro h6, .interface_intro h6, .product_intro h5, .operate_intro h5, .library_intro h5{ font-size: 30px;}
+/*longtitle font size 28px*/
+.language_intro h6, .product_intro h6{ font-size: 28px;}
+/*mobile font size 20px*/
+.mobile_menu li a{ font-size: 20px;}
+/*info font size 15px*/
+nav ul li a, .language_show span, .contact_intro p{ font-size: 15px;}
+/*subinfo font size 14px*/
+.intro_content p, .bets_intro p, .bets_features h5, .interface_intro p, .language_intro p, .product_intro p, .operate_intro p, .library_intro p, .contact_info, .message_box{ font-size: 14px;}
+/*font line height 1.9*/
+.intro_content p, .bets_intro p, .bets_features h5, .interface_intro p, .language_intro p, .product_intro p, .operate_intro p, .library_intro p{ line-height: 1.9;}
+/*font color - gray*/
+nav ul li a, .features_computer span, .tablet_font span, .mobile_font span{ color: #ededed;}
+/*font color - b gray*/
+.product_intro h6{ color: #cdcdcd;}
+/*font color - red*/
+.intro_content h1, .intro_content h2, .bets_intro h6, .interface_intro h6, .language_intro h6, .product_title_info h3, .product_intro h5, .operate_intro h5, .library_intro h5, .contact_title_info h3{ color: #d62323;}
+/*font color - blue*/
+.intro_content p, .bets_intro p, .interface_intro p, .language_intro p, .language_show span, .product_intro p, .operate_intro p, .library_intro p{ color: #3a4750;}
+/*font color - skyblue*/
+.bets_features h5{ color: #6b7d8d;}
+/*hover style*/
+nav ul li a:hover{ color: #e12727;}
+
+/*common style*/
+.wrapper{ width: 1024px; margin: 0 auto; position: relative;}
+.container{ width: 100%;}
+input{ border: none; outline: none; background-color: none; word-break:break-all;}
+textarea{ resize: none;}
+button{ border: none; outline: none; background: none;}
+/*common - header / nav*/
+header{ width: 100%; background: #1a1f23; position: fixed; z-index: 999;}
+.logo{ width: 225px; padding: 10px 0; float: left;}
+.logo > img{ display: block; width: 100%; height: auto;}
+nav{ float: right; padding: 25px 0 0 0;}
+nav ul li{ float: left; padding: 0 20px;}
+nav ul li a{ letter-spacing: 1px;}
+.computer_menu ul li:nth-child(5){ padding: 0 20px 0 20px; border-right: 1px solid rgba(237,237,237,.5);}
+/*hamburger menu*/
+.overlay{ position: fixed; background: #0a0a0a; width: 100%; right: 0; top: 0; height: 100%; z-index: 20; transition: .5s; -webkit-transition: .5s; -moz-transition: .5s; -o-transition: .5s; visibility: hidden; opacity: 0; pointer-events: none; box-shadow: 0px 7px 7px rgba(0,0,0,.5);}
+.overlay.open{ height: 100%; opacity: 1; visibility: visible;}
+.mobile_menu{ position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); text-align: center;}
+.mobile_menu ul li:nth-child(5){ border: none;}
+.mobile_menu li{ float: none; padding: 20px 0 10px;}
+.mobile_menu li a{ pointer-events: auto;}
+.hanburgmenu{ position: fixed; width: 30px; height: 25px; z-index: 30; top: 28px; right: 140px; cursor: pointer; display: none;}
+.hanburgmenu span{ display: inline-block; width: 100%; height: 3px; background: #ddd; position: absolute; z-index: 10; transition: .5s; -webkit-transition: .5s; -moz-transition: .5s; -o-transition: .5s;}
+.top{ top: 0;}
+.middle{ top: 8px;}
+.bottom{ top: 16px;}
+.hanburgmenu.active .top{ -webkit-transform: translate(0,10px) rotate(45deg); transform: translate(0,10px) rotate(45deg); background: #ddd;}
+.hanburgmenu.active .middle{ opacity: 0;}
+.hanburgmenu.active .bottom{ -webkit-transform: translate(0,-6px) rotate(-45deg); transform: translate(0,-6px) rotate(-45deg); background: #ddd;}
+
+/*qqkeno first content / 介紹qqkeno、動畫、引導方框*/
+.intro_content{ padding: 35% 0 2%; float: left; width: 46%; position: relative; z-index: 100;}
+.intro_content h1, .intro_content h2{ font-weight: 500;}
+.intro_content h2{ padding: 70px 0 20px 0;}
+.intro_content p{ padding: 20px 0; width: 100%; letter-spacing: 1px;}
+.intro_movement{ float: right; width: 50%; position: relative; padding: 15% 0 2%;}
+.intro_movement img{ display: block; width: 100%; height: auto;}
+.intro_movement span{ display: inline-block; background: url(../img/qq_header_s2.png) no-repeat; background-size: 90%; width: 100%; height: 100%; position: absolute; top: 150px; left: -50px; transform: rotate(0.2deg); visibility: hidden;}
+/*js-active*/
+.intro_movement span.movementactive{ animation: movement_effect 1.3s forwards; -webkit-animation: movement_effect 1.3s forwards; -moz-animation: movement_effect 1.3s forwards; -o-animation: movement_effect 1.3s forwards; -ms-animation: movement_effect 1.3s forwards;}
+
+/*CN-style*/
+.intro_cn{ width: 43%}
+.intro_cn h2{ font-size: 36px;}
+
+/*Bottom Guide Rect / 下方紅色引導*/
+.guide_rect{ text-align: center; padding: 20px 0;}
+.guide_rect span{ display: inline-block; width: 5px; height: 50px; background: #ae1e1e;}
+.guide_rect span:nth-child(2){ width: 10px;}
+.guide_rect span:nth-child(3){ width: 20px;}
+/*js-active*/
+.guide_rect span.guiderectactive{ animation: .4s  drawguiderect forwards; -webkit-animation: .4s  drawguiderect forwards; -moz-animation: .4s  drawguiderect forwards; -o-animation: .4s  drawguiderect forwards; -ms-animation: .4s  drawguiderect forwards;}
+.guide_rect span:nth-child(2).guiderectactive{ animation: .5s  drawguiderect forwards; -webkit-animation: .5s  drawguiderect forwards; -moz-animation: .5s  drawguiderect forwards; -o-animation: .5s  drawguiderect forwards; -ms-animation: .5s  drawguiderect forwards;}
+.guide_rect span:nth-child(3).guiderectactive{ animation: .8s  drawguiderect forwards; -webkit-animation: .8s  drawguiderect forwards; -moz-animation: .8s  drawguiderect forwards; -o-animation: .8s  drawguiderect forwards; -ms-animation: .8s  drawguiderect forwards;}
+
+/*qqkeno second content / 急速投注 & 獲利*/
+.bets_container{ position: relative;}
+.bets_effect{ float: left; width: 50%; margin: 60px 0; padding-bottom: 10px; position: relative; overflow: hidden; box-shadow: 5px 1px 30px 0px rgba(26,31,35,0.2);  border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-bottom-left-radius: 5px;}
+.bets_effect span{ display: block;}
+.bets_effect span:nth-child(1){  width: 100%; height: 480px; background: url(../bets_img/bets_0.png) no-repeat; background-size: 100%;}
+.bets_effect span:nth-child(2){  width: 100%; height: 480px; background: url(../bets_img/bets_1.png) no-repeat; background-size: 100%; position: absolute; top: 0;}
+.bets_effect span:nth-child(3){  width: 100%; height: 480px; background: url(../bets_img/bets_2.png) no-repeat; background-size: 100%; position: absolute; top: 0;}
+.bets_effect span:nth-child(4){  width: 100%; height: 480px; background: url(../bets_img/bets_3.png) no-repeat; background-size: 100%; position: absolute; top: 0;}
+.bets_effect span:nth-child(5){  width: 100%; height: 480px; background: url(../bets_img/bets_4.png) no-repeat; background-size: 100%; position: absolute; top: 0;}
+.bets_effect span:nth-child(6){  width: 100%; height: 480px; background: url(../bets_img/bets_5.png) no-repeat; background-size: 100%; position: absolute; top: 0;}
+.bets_effect span:nth-child(7){  width: 100%; height: 480px; background: url(../bets_img/bets_6.png) no-repeat; background-size: 100%; position: absolute; top: 0;}
+.bets_effect span:nth-child(8){  width: 100%; height: 480px; background: url(../bets_img/bets_7.png) no-repeat; background-size: 100%; position: absolute; top: 0;}
+.bets_effect span:nth-child(9){  width: 100%; height: 480px; background: url(../bets_img/bets_8.png) no-repeat; background-size: 100%; position: absolute; top: 0;}
+.bets_effect span:nth-child(10){  width: 100%; height: 480px; background: url(../bets_img/bets_9.png) no-repeat; background-size: 100%; position: absolute; top: 0;}
+.bets_intro{ float: right; width: 50%; margin: 60px 0 0 0; padding: 0 0 0 50px; box-sizing: border-box;}
+.bets_intro h6{ padding-bottom: 20px; font-weight: 500;}
+.bets_intro p{ letter-spacing: 1px;}
+.bets_features{ padding: 20px 0;}
+.bets_features .bf_focus{ display: inline-block;}
+.bets_features span{ display: inline-block; width: 20px; height: 30px; background: #6b7d8d;}
+.bets_features h5{ font-weight: 500; display: inline-block; vertical-align: top; padding: 2px 20px 0 10px;}
+.bets_right_acc{ display: inline-block; width: 380px; height: 400px; background: #ae1e1e; position: absolute; right: -2%; bottom: -15%;}
+
+/*qqkeno second content / 急速投注 & 獲利 Cn*/
+.bets_effect_cn span:nth-child(1){  width: 100%; height: 480px; background: url(../bets_img/bets_0_cn.png) no-repeat; background-size: 100%;}
+.bets_effect_cn span:nth-child(2){  width: 100%; height: 480px; background: url(../bets_img/bets_1_cn.png) no-repeat; background-size: 100%; position: absolute; top: 0;}
+.bets_effect_cn span:nth-child(3){  width: 100%; height: 480px; background: url(../bets_img/bets_2_cn.png) no-repeat; background-size: 100%; position: absolute; top: 0;}
+.bets_effect_cn span:nth-child(4){  width: 100%; height: 480px; background: url(../bets_img/bets_3_cn.png) no-repeat; background-size: 100%; position: absolute; top: 0;}
+.bets_effect_cn span:nth-child(5){  width: 100%; height: 480px; background: url(../bets_img/bets_4_cn.png) no-repeat; background-size: 100%; position: absolute; top: 0;}
+.bets_effect_cn span:nth-child(6){  width: 100%; height: 480px; background: url(../bets_img/bets_5_cn.png) no-repeat; background-size: 100%; position: absolute; top: 0;}
+.bets_effect_cn span:nth-child(7){  width: 100%; height: 480px; background: url(../bets_img/bets_6_cn.png) no-repeat; background-size: 100%; position: absolute; top: 0;}
+.bets_effect_cn span:nth-child(8){  width: 100%; height: 480px; background: url(../bets_img/bets_7_cn.png) no-repeat; background-size: 100%; position: absolute; top: 0;}
+.bets_effect_cn span:nth-child(9){  width: 100%; height: 480px; background: url(../bets_img/bets_8_cn.png) no-repeat; background-size: 100%; position: absolute; top: 0;}
+.bets_effect_cn span:nth-child(10){  width: 100%; height: 480px; background: url(../bets_img/bets_9_cn.png) no-repeat; background-size: 100%; position: absolute; top: 0;}
+
+/*js-active*/
+.bets_effect span:nth-child(10).count_active{ animation: bets_reciprocal 1s 1s forwards; -webkit-animation: bets_reciprocal 1s 1s forwards; -moz-animation: bets_reciprocal 1s 1s forwards; -o-animation: bets_reciprocal 1s 1s forwards; -ms-animation: bets_reciprocal 1s 1s forwards;}
+.bets_effect span:nth-child(9).count_active{ animation: bets_reciprocal 1.5s 1.5s forwards; -webkit-animation: bets_reciprocal 1.5s 1.5s forwards; -moz-animation: bets_reciprocal 1.5s 1.5s forwards; -o-animation: bets_reciprocal 1.5s 1.5s forwards; -ms-animation: bets_reciprocal 1.5s 1.5s forwards;}
+.bets_effect span:nth-child(8).count_active{ animation: bets_reciprocal 2s 2s forwards; -webkit-animation: bets_reciprocal 2s 2s forwards; -moz-animation: bets_reciprocal 2s 2s forwards; -o-animation: bets_reciprocal 2s 2s forwards; -ms-animation: bets_reciprocal 2s 2s forwards;}
+.bets_effect span:nth-child(7).count_active{ animation: bets_reciprocal 2.5s 2.5s forwards; -webkit-animation: bets_reciprocal 2.5s 2.5s forwards; -moz-animation: bets_reciprocal 2.5s 2.5s forwards; -o-animation: bets_reciprocal 2.5s 2.5s forwards; -ms-animation: bets_reciprocal 2.5s 2.5s forwards;}
+.bets_effect span:nth-child(6).count_active{ animation: bets_reciprocal 3s 3s forwards; -webkit-animation: bets_reciprocal 3s 3s forwards; -moz-animation: bets_reciprocal 3s 3s forwards; -o-animation: bets_reciprocal 3s 3s forwards; -ms-animation: bets_reciprocal 3s 3s forwards;}
+.bets_effect span:nth-child(5).count_active{ animation: bets_reciprocal 3.5s 3.5s forwards; -webkit-animation: bets_reciprocal 3.5s 3.5s forwards; -moz-animation: bets_reciprocal 3.5s 3.5s forwards; -o-animation: bets_reciprocal 3.5s 3.5s forwards; -ms-animation: bets_reciprocal 3.5s 3.5s forwards;}
+.bets_effect span:nth-child(4).count_active{ animation: bets_reciprocal 4s 4s forwards; -webkit-animation: bets_reciprocal 4s 4s forwards; -moz-animation: bets_reciprocal 4s 4s forwards; -o-animation: bets_reciprocal 4s 4s forwards; -ms-animation: bets_reciprocal 4s 4s forwards;}
+.bets_effect span:nth-child(3).count_active{ animation: bets_reciprocal 4.5s 4.5s forwards; -webkit-animation: bets_reciprocal 4.5s 4.5s forwards; -moz-animation: bets_reciprocal 4.5s 4.5s forwards; -o-animation: bets_reciprocal 4.5s 4.5s forwards; -ms-animation: bets_reciprocal 4.5s 4.5s forwards;}
+.bets_effect span:nth-child(2).count_active{ animation: bets_reciprocal 5s 5s forwards; -webkit-animation: bets_reciprocal 5s 5s forwards; -moz-animation: bets_reciprocal 5s 5s forwards; -o-animation: bets_reciprocal 5s 5s forwards; -ms-animation: bets_reciprocal 5s 5s forwards;}
+
+/*qqkeno third content / Responsive Web Design 載具使用*/
+.interface_container{ position: relative;}
+.interface_right_acc{ display: inline-block; width: 380px; height: 400px; background: #3a4750; position: absolute; right: -2%; top: 3px; z-index: -1;}
+.interface_intro{ margin: 88px 0 20px; position: relative; z-index: 10; width: 50%;}
+.interface_intro h6{ padding: 40px 0 20px 0; font-weight: 500;}
+.interface_intro p{ letter-spacing: 1px;}
+.interface_features{ width: 100%; height: 440px; overflow: hidden; padding: 20px 0 10px 0; margin-bottom: 30px; position: relative;}
+
+/*interface all show*/
+.interface_show{ position: absolute; top: 2%; width: 100%; height: 960px;}
+.interface_show span{ display: inline-block; border-radius: 5px; opacity: 0;}
+/*EN*/
+.interface_show span:nth-child(1){ background: url(../img/interface_computer.png) no-repeat; width: 640px; height: 480px; background-size: 100%; position: absolute; left: 21%;}
+.interface_show span:nth-child(2){ background: url(../img/interface_tablet.png) no-repeat; width: 320px; height: 480px; background-size: 100%; position: absolute; left: 0%; top: 10%; box-shadow: 5px 1px 30px 0px rgba(26,31,35,0.2);}
+.interface_show span:nth-child(3){ background: url(../img/interface_mobile.png) no-repeat; width: 240px; height: 480px; background-size: 100%; position: absolute; right: 0%; top: 10%; box-shadow: -5px 1px 30px 0px rgba(26,31,35,0.2);}
+/*CN*/
+.interface_show_cn span:nth-child(1){ background: url(../img/interface_computer_cn.png) no-repeat; width: 640px; height: 480px; background-size: 100%; position: absolute; left: 21%;}
+.interface_show_cn span:nth-child(2){ background: url(../img/interface_tablet_cn.png) no-repeat; width: 320px; height: 480px; background-size: 100%; position: absolute; left: 0%; top: 10%; box-shadow: 5px 1px 30px 0px rgba(26,31,35,0.2);}
+.interface_show_cn span:nth-child(3){ background: url(../img/interface_mobile_cn.png) no-repeat; width: 240px; height: 480px; background-size: 100%; position: absolute; right: 0%; top: 10%; box-shadow: -5px 1px 30px 0px rgba(26,31,35,0.2);}
+/*js-active*/
+/*EN*/
+.interface_show span:nth-child(1).showup{animation: showup 1s forwards;}
+.interface_show span:nth-child(2).showup{animation: showup 1.5s 1s forwards;}
+.interface_show span:nth-child(3).showup{animation: showup 2s 1.5s forwards;}
+
+/*qqkeno fourth content / language / 支援多語系*/
+.language_intro{ text-align: center;}
+.language_intro h6{ padding: 0 0 20px 0; font-weight: 500; letter-spacing: 1px;}
+.language_intro p{ width: 65%; margin: 0 auto; letter-spacing: 1px;} 
+.language_features{ width: 100%; position: relative;}
+.language_features > span{ display: inline-block; width: 400px; height: 450px; background: url(../img/interface_tablet.png) no-repeat; background-size: 100%; margin: 3% 0 3% 15%; border-radius: 5px; box-shadow: 5px 1px 30px 0px rgba(26,31,35,0.2);}
+.language_show{ position: absolute; top: 18%; left: 60%; overflow: hidden;}
+.language_show span{ display: block; padding: 8% 0; font-weight: 500; letter-spacing: 1px; opacity: 0;}
+.language_show span:nth-child(1):before{ content: ''; display: inline-block; background: url(../img/language_cn.svg); width: 40px; height: 25px; background-size: 100%; margin: -6px 15px -6px 0; box-shadow: 5px 1px 30px 0px rgba(26,31,35,0.2);}
+.language_show span:nth-child(2):before{ content: ''; display: inline-block; background: url(../img/language_en.svg); width: 40px; height: 25px; background-size: 100%; margin: -6px 15px -6px 0; box-shadow: 5px 1px 30px 0px rgba(26,31,35,0.2);}
+.language_show span:nth-child(3):before{ content: ''; display: inline-block; background: url(../img/language_bi.svg); width: 40px; height: 25px; background-size: 100%; margin: -6px 15px -6px 0; border: 1px solid #eee; box-shadow: 5px 1px 30px 0px rgba(26,31,35,0.2);}
+.language_show span:nth-child(4):before{ content: ''; display: inline-block; background: url(../img/language_pt.svg); width: 40px; height: 25px; background-size: 100%; margin: -6px 15px -6px 0; box-shadow: 5px 1px 30px 0px rgba(26,31,35,0.2);}
+.language_show span:nth-child(5):before{ content: ''; display: inline-block; background: url(../img/language_tv.svg); width: 40px; height: 25px; background-size: 100%; margin: -6px 15px -6px 0; box-shadow: 5px 1px 30px 0px rgba(26,31,35,0.2);}
+.common_rect{ width: 290px; height: 270px; background: #ae1e1e; display: inline-block; margin: -250px 0 0 118px; position: relative; z-index: -1;}
+
+/*CN*/
+.language_features_cn > span{ display: inline-block; width: 400px; height: 450px; background: url(../img/interface_tablet_cn.png) no-repeat; background-size: 100%; margin: 3% 0 3% 15%; border-radius: 5px; box-shadow: 5px 1px 30px 0px rgba(26,31,35,0.2);}
+
+/*js-active*/
+.language_show span:nth-child(1).languageactive{ animation: langshow 2s forwards; -webkit-animation: langshow 2s forwards; -moz-animation: langshow 2s forwards; -o-animation: langshow 2s forwards; -ms-animation: langshow 2s forwards;}
+.language_show span:nth-child(2).languageactive{ animation: langshow 2s 1s forwards; -webkit-animation: langshow 2s 1s forwards; -moz-animation: langshow 2s 1s forwards; -o-animation: langshow 2s 1s forwards; -ms-animation: langshow 2s 1s forwards;}
+.language_show span:nth-child(3).languageactive{ animation: langshow 2s 2s forwards; -webkit-animation: langshow 2s 2s forwards; -moz-animation: langshow 2s 2s forwards; -o-animation: langshow 2s 2s forwards; -ms-animation: langshow 2s 2s forwards;}
+.language_show span:nth-child(4).languageactive{ animation: langshow 2s 3s forwards; -webkit-animation: langshow 2s 3s forwards; -moz-animation: langshow 2s 3s forwards; -o-animation: langshow 2s 3s forwards; -ms-animation: langshow 2s 3s forwards;}
+.language_show span:nth-child(5).languageactive{ animation: langshow 2s 4s forwards; -webkit-animation: langshow 2s 4s forwards; -moz-animation: langshow 2s 4s forwards; -o-animation: langshow 2s 4s forwards; -ms-animation: langshow 2s 4s forwards;}
+
+
+/*qqkeno five content / product / 十大市場*/
+.product_intro_container{ overflow: hidden;}
+.product_title_info > .guide_rect{ text-align: left; margin: 20px 0 0 26px; display: inline-block;}
+.product_title_info > .guide_rect span{ background: #ae1e1e;}
+.product_title_info h3{ display: inline-block; padding: 0 0 0 20px; font-weight: 500; letter-spacing: 1px; color: #ae1e1e;}
+.product_intro{ float: left; width: calc(100% / 2 - 10px); padding: 90px 0 50px 0; letter-spacing: 1px;}
+.product_intro h5{ padding: 0 0 15px 0; font-weight: 500;}
+.product_intro h6{ padding: 0 0 20px 0;}
+.product_intro:nth-child(2){ text-align: right;}
+.product_intro span{ display: inline-block; width: 450px; height: 487px; background: url(../img/markets.png) no-repeat; background-size: 100%; border-radius: 5px; box-shadow: 5px 1px 30px 0px rgba(26,31,35,0.5); position: relative;}
+.product_rect_align{ text-align: right;}
+.product_rect{ width: 320px; height: 500px; background: #f3f3f3; display: inline-block; margin: -250px 195px 0 0px; position: relative; z-index: -1;}
+.scrolleffect, .product_intro span{ visibility: hidden;}
+/*CN*/
+.product_intro_cn span{ display: inline-block; width: 450px; height: 487px; background: url(../img/markets_cn.png) no-repeat; background-size: 100%; border-radius: 5px; box-shadow: 5px 1px 30px 0px rgba(26,31,35,0.5); position: relative;}
+.product_title_info h3.cn_title{ font-size: 50px;}
+/*js-active*/
+.scrolleffect.productactive{ animation: leftshow .8s forwards; -webkit-animation: leftshow .8s forwards; -moz-animation: leftshow .8s forwards; -o-animation: leftshow .8s forwards; -ms-animation: leftshow .8s forwards;}
+.product_intro span.productactive{ animation: rightshow .8s 1s forwards; -webkit-animation: rightshow .8s 1s forwards; -moz-animation: rightshow .8s 1s forwards; -o-animation: rightshow .8s 1s forwards; -ms-animation: rightshow .8s 1s forwards;}
+
+
+
+/*qqkeno six content / operate / 操作方式*/
+.operate_container{ margin: -170px 0 0 0;}
+.operate_intro{ float: left; width: calc(100% / 2 - 10px); padding: 0 0 50px 0; position: relative; letter-spacing: 1px;}
+.operate_intro .operate_mockup{ display: inline-block; width: 450px; height: 580px; background: url(../img/bets_ui_mk.png) no-repeat; background-size: 80%;}
+.mockup_range{ display: inline-block; width: 315px; height: 478px; position: absolute; left: 23px; top: 102px; background: #f3f3f3; overflow: hidden;}
+.operate{ display: inline-block; width: 315px; height: 605px; position: absolute; top: 0px; left: 0px;}
+.mockup01{ background: url(../img/bets_ui_mk_01.png) no-repeat; background-size: 100%; top: 0;}
+.mockup02{ background: url(../img/bets_ui_mk_02.png) no-repeat; background-size: 100%; top: 0;}
+.mockup03{ background: url(../img/bets_ui_mk_03.png) no-repeat; background-size: 100%;}
+.operate_intro h5{ font-weight: 500; padding: 0 0 15px 0; width: 300px; line-height: 1.5;}
+.operate_margin{ margin: 270px 0 20px -90px;}
+.mockup01, .mockup02, .mockup03{ visibility: hidden;}
+/*CN*/
+.mockup01_cn{ background: url(../img/bets_ui_mk_01_cn.png) no-repeat; background-size: 100%; top: 0;}
+.mockup02_cn{ background: url(../img/bets_ui_mk_02_cn.png) no-repeat; background-size: 100%; top: 0;}
+.mockup03_cn{ background: url(../img/bets_ui_mk_03_cn.png) no-repeat; background-size: 100%;}
+/*js-active*/
+.mockup01.operateactive{ animation: mockupshow 2s forwards; -webkit-animation: mockupshow 2s forwards; -moz-animation: mockupshow 2s forwards; -o-animation: mockupshow 2s forwards; -ms-animation: mockupshow 2s forwards;}
+.mockup02.operateactive{ animation: mockupshow 2s 2s forwards; -webkit-animation: mockupshow 2s 2s forwards; -moz-animation: mockupshow 2s 2s forwards;  -o-animation: mockupshow 2s 2s forwards; -ms-animation: mockupshow 2s 2s forwards;}
+.mockup03.operateactive{ animation: leftshow 2s 4s forwards; -webkit-animation: leftshow 2s 4s forwards; -moz-animation: leftshow 2s 4s forwards;  -o-animation: leftshow 2s 4s forwards; -ms-animation: leftshow 2s 4s forwards;}
+
+/*qqkeno seven content / library / 完整信息*/
+.library_container{ margin: 0 auto 80px;}
+.library_intro{ text-align: center;}
+.library_intro h5{ padding: 0 0 20px 0; font-weight: 500; letter-spacing: 1px;}
+.library_intro p{ width: 72%; margin: 0 auto; letter-spacing: 1px; line-height: 1.5;}
+.library_features{ width: 100%; overflow: hidden; text-align: center; margin: 20px 0 0 0;}
+.library_features span{ display: inline-block; width: 100%; height: 500px; background: url(../img/perfect_lib.png) no-repeat; background-size: 100%; position: relative;}
+/*CN*/
+.library_features_cn span{ display: inline-block; width: 100%; height: 500px; background: url(../img/perfect_lib_cn.png) no-repeat; background-size: 100%; position: relative;}
+/*js-active*/
+.library_features span.libraryactive{ animation: showup 1.2s forwards; -webkit-animation: showup 1.2s forwards; -moz-animation: showup 1.2s forwards; -o-animation: showup 1.2s forwards; -ms-animation: showup 1.2s forwards;}
+
+/*qqkeno eight content / contact us / 聯繫我們*/
+.backgroundstyle{ width:100%; background: #1a1f23; margin: -10px 0 0 0;}
+.contact_intro{ text-align: center; padding: 0 0 50px 0;}
+.contact_title_info > .guide_rect{ text-align: left; margin: 20px 0 0 26px; display: inline-block;}
+.contact_title_info > .guide_rect span{ background: #d62323;}
+.contact_title_info h3{ display: inline-block; padding: 0 0 0 20px; font-weight: 500; letter-spacing: 1px; color: #d62323;}
+.contact_intro p{ color: #ddd; letter-spacing: 1.2px; }
+.motion_background{ position: relative;}
+.background_container{ overflow: hidden; height: 360px; position: relative; margin-top: -98px;  pointer-events: none;}
+.background_container .motion_background{ display: inline-block; width: 100%; height: 380px; background: url(../img/contact_bg.svg) no-repeat; background-size: 105%; position: relative;}
+.motion_circle{ position: absolute; top: 0; width: 100%; height: 360px;}
+.motion_circle .circle01{ display:inline-block; width: 100%; height: 360px; background: url(../img/contact_circle_01.svg) no-repeat; background-size: 100%; position: absolute; top: 0;}
+.motion_circle .circle02{ display:inline-block; width: 100%; height: 360px; background: url(../img/contact_circle_02.svg) no-repeat; background-size: 100%; position: absolute; top: 0;}
+.motion_circle .circle03{ display:inline-block; width: 100%; height: 360px; background: url(../img/contact_circle_03.svg) no-repeat; background-size: 100%; position: absolute; top: 0;}
+
+/*CN*/
+.contact_title_info h3.cn_title{ font-size: 50px;}
+/*js-active*/
+.motion_background.contactactive{ animation: interactive 10s alternate; -webkit-animation: interactive 10s alternate; -moz-nimation: interactive 10s alternate; -o-nimation: interactive 10s alternate; -ms-nimation: interactive 10s alternate;}
+.circle01.contactactive{ animation: circleup 6s alternate; -webkit-animation: circleup 6s alternate; -moz-animation: circleup 6s alternate; -o-animation: circleup 6s alternate; -ms-animation: circleup 6s alternate;}
+.circle02.contactactive{ animation: circledown 8s alternate; -webkit-animation: circledown 8s alternate; -moz-animation: circledown 8s alternate; -o-animation: circledown 8s alternate; -ms-animation: circledown 8s alternate;}
+.circle03.contactactive{ animation: circleup 10s alternate; -webkit-animation: circleup 10s alternate; -moz-animation: circleup 10s alternate; -o-animation: circleup 10s alternate; -ms-animation: circleup 10s alternate;}
+
+
+/*loading effect*/
+.loading_container{ position: fixed; background: #0a0a0a; width: 100%; top: 0; left: 0; height: 100%; z-index: 20; transition: .5s; -webkit-transition: .5s; -moz-transition: .5s; -o-transition: .5s; z-index: 9999;}
+.loading_content{ width: 100%; height: 100%; position: relative;}
+.loading_container .guide_rect{ position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);}
+.loading_container .guide_rect span{ display: inline-block; width: 5px; height: 50px; background: #ae1e1e;}
+.loading_container .guide_rect span:nth-child(2){ width: 10px;}
+.loading_container .guide_rect span:nth-child(3){ width: 20px;}
+
+/*loading-active*/
+.loading_logo{ animation: loadingshow 2s infinite; -webkit-animation: loadingshow 2s infinite; -moz-animation: loadingshow 2s infinite; -ms-animation: loadingshow 2s infinite; -o-animation: loadingshow 2s infinite;}
+.loading_container .guide_rect span{ animation: 1s 1s drawguiderect forwards infinite; -webkit-animation: 3s 1s drawguiderect forwards infinite; -moz-animation: 3s 1s drawguiderect forwards infinite; -o-animation: 3s 1s drawguiderect forwards infinite; -ms-animation: 3s 1s drawguiderect forwards infinite;}
+.loading_container .guide_rect span:nth-child(2){ animation: 1s 1.2s drawguiderect forwards infinite; -webkit-animation: 3s 1.2s drawguiderect forwards infinite; -moz-animation: 3s 1.2s drawguiderect forwards infinite; -o-animation: 3s 1.2s drawguiderect forwards infinite; -ms-animation: 3s 1.2s drawguiderect forwards infinite;}
+.loading_container .guide_rect span:nth-child(3){ animation: 1s 1.5s drawguiderect forwards infinite; -webkit-animation: 3s 1.5s drawguiderect forwards infinite; -moz-animation: 3s 1.5s drawguiderect forwards infinite; -o-animation: 3s 1.5s drawguiderect forwards infinite; -ms-animation: 3s 1.5s drawguiderect forwards infinite;}
+
+/*contact - form*/
+.form_container{ width: 90%; margin: 0 auto; text-align: center;}
+.contact_info{ border: 1px solid #6b7d8d; border-radius: 5px; width: 50%; height: 50px; background: rgba(10,10,10,.2); padding:0 2%; margin: 10px 0 5px; color: #ddd;}
+.message_box{ height: 120px; padding: 2%;}
+.submit_box{ width: 50%; height: 50px; border: 1px solid #6b7d8d; color: #6b7d8d; border-radius: 5px;}
+.submit_box:hover{ background: #fff; color: #ae1e1e; cursor: pointer;}
+/*placeholder font color*/
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #6b7d8d;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #6b7d8d;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #6b7d8d;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #6b7d8d;
+}
+
+/*footer*/
+footer{ color: #fff; width: 100%; height: 50px; line-height: 4.5; letter-spacing: 1.6px; font-size: 12px;}
+
+
+/*media query responsive web design*/
+@media (max-width: 1024px){
+/*common style*/
+.container, .wrapper, .bets_container, .language_container{ width: 100%; overflow: hidden;}
+.logo{ padding: 10px 0 10px 5%; z-index: 999; position: relative;}
+/*mobile menu show*/
+.hanburgmenu{ display: block; right: 5%;}
+.computer_menu{ display: none;}
+/*qqkeno first content / qqkeno header*/
+.intro_content{ padding: 36% 0 2% 5%; width: 47%;}
+.intro_movement{ padding: 15% 2% 2% 0%;}
+.intro_movement span{ top: 130px; left: -30px;}
+.intro_content.intro_cn{ width: 48%;}
+/*qqkeno second content / bets*/
+.bets_right_acc{ right: 1%; bottom: -30%;}
+.bets_effect{ width: 40%; height: 400px; margin: 60px 0 60px 5%;}
+.bets_intro{ margin: 60px 25px 60px 0;}
+/*qqkeno third content / RWD*/
+.interface_right_acc{ right: 8.1%; top: 0;}
+.interface_intro{ margin: 88px 0 20px 5%; width: 48%;}
+.interface_show span:nth-child(2){ left: 5%;}
+.interface_show span:nth-child(3){ right: 5%;}
+/*qqkeno fourth content / language*/
+.common_rect{ margin: -250px 0 0 14%;}
+/*qqkeno five content / product*/
+.product_intro{ width: calc(93% / 2 - 10px);}
+.product_intro:nth-child(1){ padding-left: 5%;}
+.product_intro:nth-child(2){ padding-left: 6.5%;}
+.product_title_info > .guide_rect{ margin: 20px 0 0 5%;}
+/*qqkeno six content / operate*/
+.operate_container{ margin: 0;}
+.operate_intro{ padding: 0 0 50px 5%;}
+.mockup_range{ left: 14.7%;}
+/*footer*/
+footer{ padding: 0 0 0 5%;}
+}
+
+@media (max-width: 992px){
+
+.intro_content{ width: 48%;}
+.intro_cn h2{ font-size: 33px;}
+
+.bets_features h5{ padding: 2px 20px 0 0;}
+.bets_right_acc{ right: -6%;}
+
+
+.interface_intro h6{ width: 60%; line-height: 1.3;}
+.interface_right_acc{ right: 1.6%;}
+
+
+.product_intro:nth-child(2){ padding-left: 3.8%;}
+
+
+.mockup_range{ left: 15%;}
+
+
+
+
+}
+
+@media (max-width: 768px){
+
+/*mobile info font size 16px*/
+.intro_content p, .bets_intro p, .bets_features h5, .interface_intro p, .language_intro p, .product_intro p, .operate_intro p, .library_intro p{ font-size: 16px;}
+/*qqkeno first content / qqkeno header*/
+.intro_container{ position: relative;}
+.intro_content, .intro_content.intro_cn{ width: 70%; float: none; position: relative;}
+.intro_content h2:after{ content: ''; display: inline-block; width: 100%; height: 85%; background: #fff; position: absolute; left: 200px; top: 20%; z-index: -1; opacity: .5;}
+.intro_content h2:after{ transform: skew(-7deg); -webkit-transform: skew(-7deg); -moz-transform: skew(-7deg); -o-transform: skew(-7deg); -ms-transform: skew(-7deg);}
+.intro_movement{ position: absolute; top: 0; right: 0; z-index: -2; width: 60%;}
+.intro_content.intro_cn h2:after{  opacity: .8; z-index: -1;}
+/*qqkeno second content / bets*/
+.bets_intro h6{ line-height: 1.4;}
+.bets_effect{ height: 300px; margin: 60px 0 260px 5%;}
+.bets_features .bf_focus{ display: block; padding-bottom: 15px;}
+.bets_right_acc{ width: 360px; height: 595px; right: -46%; bottom: -45%;}
+/*qqkeno third content / RWD*/
+.interface_right_acc{ right: -37.5%;}
+.interface_intro{ width: 65%;}
+.interface_show span:nth-child(1){ left: 8.5%;}
+/*qqkeno fourth content / language*/
+.language_intro p{ width: 85%;}
+.language_intro{ padding: 0 5%;}
+.language_intro h6{ line-height: 1.6;}
+.language_features > span{ margin: 3% 0 3% 5%;}
+.language_show{ left: 65%;}
+/*qqkeno five content / product*/
+.product_intro{ width: 90%; float: none; margin: 0 auto; padding: 40px 0 0 0;}
+.product_rect{ height: 380px;}
+/*qqkeno six content / operate*/
+.operate_intro{ width: 50%; float: none; display: inline-block; padding: 0 0 0 5%;}
+.operate_intro:nth-child(2){ width: 48%; padding-left: 5%;}
+.operate_margin{ margin: 0 0 10px 0;}
+.mockup_range{ left: 61px;}
+.operate_intro.operate_cn:nth-child(2){ vertical-align: top; padding: 175px 0 0 5%;}
+/*qqkeno seven content / library*/
+.library_intro p{ width: 90%; padding: 0 5%; margin: 0 auto;}
+.library_features span{ height: 400px;}
+/*qqkeno eight content / contact us*/
+.contact_title_info > .guide_rect.guide_rect_cn{ margin: 20px 0 0 0;}
+.background_container .motion_background{ background-position: 50%; background-size: 110%;}
+
+}
+
+@media (max-width: 480px){
+/*qqkeno first content / qqkeno header*/
+.intro_movement{ width: 125%; top: 70px; right: -171px;}
+.intro_movement span{ top: 70px; left: -60px;}
+.intro_content{ width: 90%; padding: 42% 0 2% 5%;}
+.intro_content h2:after{ width: 110%; height: 80%; left: 5%; top: 20%; opacity: .8;}
+.intro_content h2:after{ transform: none;}
+.intro_content h1{ line-height: 1.4; width: 90%;}
+.intro_content h2{ font-size: 38px; padding: 70px 0 10px 0;}
+.intro_content.intro_cn{ width: 90%; padding: 85% 0 2% 5%;}
+.intro_cn h2{ font-size: 36px; line-height: 1.4; letter-spacing: 2.4px;}
+/*qqkeno second content / bets*/
+.bets_effect{ width: 90%; height: 374px; float: none; margin: 20px 0 260px 5%;}
+.bets_intro{ width: 90%; margin: -230px 25px 60px 0; padding: 0 0 0 5%;}
+.bets_right_acc{ width: 90%; height: 5px; right: -10%; bottom: 0;}
+.bets_intro h6{ width: 80%;}
+.bets_intro.bets_intro_cn h6{ font-size: 28px;}
+/*qqkeno third content / RWD*/
+.interface_right_acc{ display: none;}
+.interface_intro{ width: 90%; margin: 28px 0 20px 5%;}
+.interface_intro h6{ line-height: 1.5; width: 80%;}
+.interface_show span:nth-child(3){ right: 5%; top: 22%;}
+/*qqkeno fourth content / language*/
+.language_features > span{ visibility: hidden;}
+.language_show{ left: 30%; top: 5%;}
+.language_intro p{ width: 100%;}
+/*qqkeno five content / product*/
+.product_intro span{ right: -15%;}
+.product_rect{ height: 380px; margin: -250px 195px -30px 0;}
+.product_intro:nth-child(2){ padding-bottom: 3%;}
+/*qqkeno six content / operate*/
+.operate_container{ text-align: center; }
+.operate_intro{ width: 90%; padding: 0 5%; box-sizing: border-box; -webkit-box-sizing: border-box;}
+.operate_intro .operate_mockup{ width: 125%; height: 489px;}
+.operate{ width: 100%;}
+.mockup_range{ left: 11%; top: 19%; width: 78.1%; height: 79.2%;}
+.operate_intro:nth-child(2){ width: 90%; padding: 0 5%;}
+.operate_intro h5{ width: 100%; padding: 20px 0;}
+.operate_intro.operate_cn:nth-child(2){ width: 90%; padding: 0 5%;}
+/*qqkeno seven content / library*/
+.library_intro{ width: 90%; margin: 0 auto;}
+.library_intro h5{ line-height: 1.2;}
+.library_features span{ background: url(../img/perfect_lib_m.png) no-repeat -8% 0; background-size: 190%; height: 387px; border-top-left-radius: 5px; border-bottom-left-radius: 5px; padding-bottom: 20px;}
+/*CN*/
+.library_features_cn span{ background: url(../img/perfect_lib_m_cn.png) no-repeat -8% 0; background-size: 190%; height: 387px; border-top-left-radius: 5px; border-bottom-left-radius: 5px; padding-bottom: 20px;}
+.common_rect{ margin: -250px 0 0 -38%; width: 290px; height: 160px;}
+.library_intro p{ padding: 0;}
+/*qqkeno eight content / contact us*/
+.contact_title_info > .guide_rect{ margin: 20px 0 0 0;}
+.contact_title_info h3.cn_title{ font-size: 38px;}
+.background_container .motion_background{ background-size: 200%;}
+.circle01.contactactive, .circle02.contactactive, .circle03.contactactive{ background-size: 270%; background-position: 50%;}
+.motion_circle .circle01, .motion_circle .circle02, .motion_circle .circle03{ background-size: 270%; background-position: 50%;}
+.contact_info, .message_box, .submit_box{ width: 100%; padding: 0 5%;}
+.message_box{ padding: 5%;}
+.background_container{ margin-top: -75px;}
+/*footer*/
+footer{ text-align: center; padding: 0 5%; width: 100%; box-sizing: border-box; -webkit-box-sizing: border-box;}
+}
+
+@media (max-width: 425px){
+.intro_content h1{ width: 84%;}
+
+.bets_effect{ height: 362px;}
+.bets_intro{ margin: -230px 25px 40px 0;}
+
+.interface_show span:nth-child(3){ right: 0;}
+
+.contact_title_info{ width: 90%; margin: 0 auto;}
+.contact_title_info > .guide_rect{ text-align: center; margin: 20px 0 0 16px;}
+.contact_intro p{ width: 95%; margin: 0 auto;}
+}
+
+@media (max-width: 375px){
+/*qqkeno fourth content / language*/
+.language_show{ left: 23.5%;}
+
+.bets_effect{ height: 332px;}
+
+/*qqkeno six content / operate*/
+.mockup_range{ top: 18.8%;}
+.operate_intro .operate_mockup{ height: 441px;}
+
+.product_title_info{ padding: 0 5%;}
+.product_intro:nth-child(1){ padding: 20px 0 0 0;}
+
+.contact_title_info h3{ font-size: 45px; padding: 0 5%;}
+.contact_intro{ padding: 0;}
+.contact_intro p{ width: 90%; margin: 0 auto;}
+.contact_title_info{ text-align: center;}
+
+}
+
+@media (max-width: 360px){
+/*qqkeno first content / qqkeno header*/
+.intro_content h2{ font-size: 37px;}	
+/*qqkeno second content / bets*/
+.bets_intro h6{ padding: 30px 0 20px;}
+.bets_effect{ height: 318px; margin: 0 auto;}
+.bets_intro{ margin: 0 auto; width: 100%; padding: 0 5%;}
+/*qqkeno third content / RWD*/
+.interface_intro h6{ padding: 10px 0 20px;}
+/*qqkeno seven content / library*/
+.common_rect{ margin: -250px 0 0 -45%;}
+/*qqkeno six content / operate*/
+.operate_intro h5{ font-size: 28px;}
+
+
+}
+
+@media (max-width: 320px){
+.intro_content h1{ font-size: 33px; letter-spacing: 1.2px; width: 94%;}
+.intro_content h2{ padding: 70px 0 10px 0; font-size: 33px;}
+.intro_content p{ text-align: center;}
+
+.bets_effect{ height: 281px;}
+.bets_right_acc{ bottom: 1%;}
+.bets_intro h6{ width: 90%;}
+
+.interface_intro{ margin: 0 0 20px 5%;}
+.interface_intro h6{ padding: 10px 0 20px 0; width: 90%;}
+.interface_show span:nth-child(2){ left: -4%;}
+.interface_show span:nth-child(3){ right: -3%; top: 19%;}
+
+.language_intro h6{ font-size: 26px;}
+.language_show{ left: 19.5%;}
+.language_intro.language_intro_cn h6{ font-size: 25px;}
+
+.product_title_info h3{ font-size: 50px;}
+.product_intro h6{ font-size: 25px;}
+.product_intro:nth-child(1){ padding: 20px 0 0 0;}
+
+
+.operate_intro .operate_mockup{ width: 330px; height: 402px;}
+.mockup_range{ width: 235px; height: 327px; left: 29px; top: 75px;}
+.operate_intro h5{ font-size: 25px; width: 100%; padding: 20px 0;}
+
+.library_intro h5{ font-size: 25px; width: 100%;}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
