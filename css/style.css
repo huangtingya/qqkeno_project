@@ -116,7 +116,7 @@ nav ul li a{ letter-spacing: 1px;}
 .intro_movement span.movementactive{ animation: movement_effect 1.3s forwards; -webkit-animation: movement_effect 1.3s forwards; -moz-animation: movement_effect 1.3s forwards; -o-animation: movement_effect 1.3s forwards; -ms-animation: movement_effect 1.3s forwards;}
 
 /*CN-style*/
-.intro_cn{ width: 43%}
+.intro_cn{ width: 43% font-weight: bold;}
 .intro_cn h2{ font-size: 36px;}
 
 /*Bottom Guide Rect / 下方紅色引導*/
